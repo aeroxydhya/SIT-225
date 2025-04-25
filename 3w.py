@@ -2,14 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# === Load and clean the CSV file ===
 csv_filename = "dht_data.csv"
 df = pd.read_csv(csv_filename)
 
 # Convert timestamp to datetime
 df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 
-# Drop rows with NaN values in any key column
 df.dropna(subset=['timestamp', 'temperature', 'humidity'], inplace=True)
 
 # === Plot 1: Temperature ===
